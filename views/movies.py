@@ -17,14 +17,14 @@ class MovieView(Resource):
 
     # GET /movie — добавить фильм.
     def post(self):
-        if movie_service.get_create_movies(flask.request.json):
+        if movie_service.get_create_movies(**flask.request.json):
             return "Add films", 200
         else:
             return "Error add films"
 
 
 @movie_ns.route("/<int:uid>")
-class MovieViews(Resource):
+class MoviesViews(Resource):
     # GET /movie/3 — получить фильм по ID.
     def get(self, uid):
         args = flask.request.args
@@ -35,14 +35,14 @@ class MovieViews(Resource):
 
 
 @movie_ns.route("/<int:uid>")
-class MovieViews(Resource):
+class MoviesViews(Resource):
     # GET /movie/3 — получить фильм по ID жанра.
     def get(self, uid):
         return movie_schema.dump([movie_service.get_genre_by_id(uid)]), 200
 
     # put /movie/3 — обновить/редактировать фильм по ИД.
     def put(self, uid):
-        if movie_service.update_movies(flask.request.json):
+        if movie_service.update_movies(uid=uid, **flask.request.json):
             return "Add upgrade films", 200
         else:
             return "Error add upgrade films"

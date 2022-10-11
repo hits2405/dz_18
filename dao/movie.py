@@ -16,7 +16,7 @@ class MovieDAO:
 
     def create_movie(self, **kwargs):
         try:
-            self.session.query.add(Movie(**kwargs))
+            self.session.add(Movie(**kwargs))
             self.session.commit()
             return True
         except Exception as e:
