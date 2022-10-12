@@ -41,8 +41,8 @@ class MoviesViews(Resource):
         return movie_schema.dump([movie_service.get_genre_by_id(uid)]), 200
 
     # put /movie/3 — обновить/редактировать фильм по ИД.
-    def put(self, uid):
-        if movie_service.update_movies(uid=uid, **flask.request.json):
+    def put(self, id):
+        if movie_service.update_movies(id=id, **flask.request.json):
             return "Add upgrade films", 200
         else:
             return "Error add upgrade films"
