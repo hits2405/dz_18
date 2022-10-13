@@ -16,7 +16,7 @@ class MovieService:
     def get_movie_by_kwargs(self, **kwargs):
         return self.movie_dao.get_by_kwargs(**kwargs)
 
-    def update_movies(self,**kwargs):
+    def update_movies(self, **kwargs):
         return self.movie_dao.update_movie(**kwargs)
 
     def delete_movie(self,uid):
